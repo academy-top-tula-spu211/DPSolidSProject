@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include "ProductStore.h"
 
 using namespace std;
 
@@ -53,6 +54,10 @@ public:
 int main()
 {
     IDatabase* db = new DatabaseOracle();
-
     db->AddEmployee(Employee());
+
+    ProductStoreGood store(new ConsoleProductReader(),
+                           new SimpleProductCreate(),
+                           new PriceProductValidate(),
+                           new FileProductSave());
 }
